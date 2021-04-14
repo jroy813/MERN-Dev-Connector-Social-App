@@ -39,7 +39,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
             youtube: loading || !profile.youtube ? '' : profile.youtube,
             instagram: loading || !profile.instagram ? '' : profile.instagram,
         });
-    });
+    }, [loading]);
 
     const {
         company,
@@ -60,7 +60,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
 
     const onSubmit = e => {
         e.preventDefault();
-        createProfile(formData, history);
+        createProfile(formData, history, true);
     }
 
     return (
@@ -156,19 +156,19 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
                 }
 
                 <input type="submit" className="btn btn-primary my-1" />
-                <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+                <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
             </form>
         </>
     )
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
     createProfile: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
     getCurrentProfile: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state = ({
+const mapStateToProps = state => ({
     profile: state.profile
 });
 
