@@ -33,11 +33,11 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
             skills: loading || !profile.skills ? '' : profile.skills,
             githubusername: loading || !profile.githubusername ? '' : profile.githubusername,
             bio: loading || !profile.bio ? '' : profile.bio,
-            twitter: loading || !profile.twitter ? '' : profile.twitter,
-            facebook: loading || !profile.facebook ? '' : profile.facebook,
-            linkedin: loading || !profile.linkedin ? '' : profile.linkedin,
-            youtube: loading || !profile.youtube ? '' : profile.youtube,
-            instagram: loading || !profile.instagram ? '' : profile.instagram,
+            twitter: loading || !profile.social ? '' : profile.social[0].twitter,
+            facebook: loading || !profile.social ? '' : profile.social[0].facebook,
+            linkedin: loading || !profile.social ? '' : profile.social[0].linkedin,
+            youtube: loading || !profile.social ? '' : profile.social[0].youtube,
+            instagram: loading || !profile.social ? '' : profile.social[0].instagram,
         });
     }, [loading, getCurrentProfile]);
 
